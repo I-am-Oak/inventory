@@ -7,6 +7,7 @@ body
     font-family: 'Arial';  
 }  
 .login{  
+        opacity: 0.78;
         width: 382px;  
         overflow: hidden;  
         margin: auto;  
@@ -51,7 +52,7 @@ label{
   
 }  
 span{  
-    color: white;  
+    color: black;  
     font-size: 17px;  
 }  
 
