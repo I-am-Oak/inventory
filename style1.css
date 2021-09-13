@@ -17,6 +17,8 @@ body
         border-radius: 15px ;  
 }  
 h2{  
+    font-size: xx-large;
+    font-family:Georgia, 'Times New Roman', Times, serif;
     text-align: center;  
     color: #ffffff;  
     padding: 20px;  
