@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+    <h2>Sign Up Page</h2><br>    
+    <div class="login">    
+    <form class="submit-form" onsubmit="return validation()">    
+        <label><b>Email Id
+        </b>    
+        </label>
+        <span id="erroremail" style="color: red ;"></span>
+        <input type="email" name="EmailId" class="Input" placeholder="Email" >    
+        <br><br> 
+        <label><b>Username
+        </b>    
+        </label> 
+        <span id="erroruname" style="color: red ;"></span>     
+        <input type="text" name="Uname" class="Input" placeholder="Username" >    
+        <br><br>    
+        <label><b> Enter Password     
+        </b>    
+        </label>
+        <span id="errorpass" style="color: red ;"></span>   
+        <input type="Password" name="Pass" class="Input" placeholder="Password" >  
+        <br><br>
+        <label><b> Re-Enter Password     
+        </b>    
+        </label>
+        <span id="errorpass2" style="color: red ;"></span>
+        <input type="Password" name="Pass2" class="Input" placeholder="Password" >   
+        <br><br>    
+        <button href ="#" name="log" id="log" type= "submit">SIGN UP</button>
+        <br><br>    
+    </form>   
+</div> 
+<script type="text/javascript">
+    var $form = $('form#test-form'),
+    url = 'https://script.google.com/macros/s/AKfycbyGArqFCRnqJx5A3PGsLcSjzb7hoA3osFSb-o4VIzYwLwZrTTYK/exec'
+
+$('#submit-form').on('click', function(e) {
+  e.preventDefault();
+  var jqxhr = $.ajax({
+    url: url,
+    method: "GET", 
+    dataType: "json",
+    data: $form.serializeObject()
+  }).success(
+    // do something
+  );
+})
+    function validation(){
+        var email = document.getElementsByClassName('EmailId').value;
+        var usnam = document.getElementByClassName('Uname').value;
+        var pasw = document.getElementByClassName('Pass').value;
+        var pasw2 = document.getElementByClassName('Pass2').value;
+
+        var emailcheck = /^[A-Za-z_0-9.]{3,}@[A-Za-z]{3,}[.]{1}[A-Za-z.]{2,6}$/;
+        var usnamcheck = /^ [A-Za-z0-9]{4,10}$/;
+        var paswcheck = /^ [A-Za-z0-9@.-_?/!#*$]{8,15}   $/;
+
+        if (emailcheck.test(email)){
+            document.getElementById('erroremail').innerHTML="";
+        }
+        else{
+            document.getElementById('erroremail').innerHTML="**invalid Email";
+            return false;
+        }
+    
+    if (usnamcheck.test(usnam)){
+            document.getElementById('erroruname').innerHTML="";
+        }
+        else{
+            document.getElementById('erroruname').innerHTML="**invalid UserName";
+            return false;
+        }
+     
+    if (paswcheck.test(pasw)){
+            document.getElementById('errorpass').innerHTML="";
+        }
+        else{
+            document.getElementById('errorpass').innerHTML="Password must be of 8-15 characters using letters numbers and special charaters";
+            return false;
+        }
+
+    if(pasw==pasw2){
+        document.getElementById('errorpass2').innerHTML="";
+        }
+        else{
+            document.getElementById('errorpass2').innerHTML="Passwords do not match" ;
+            return false;
+        }
+    }
+    
+</script>
+</body>
+</html>
